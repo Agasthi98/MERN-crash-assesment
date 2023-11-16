@@ -52,4 +52,30 @@ const deleteVehicle = async (req, res) => {
   }
 };
 
-export { addVehicle, getVehiclesList, getVehicleById, deleteVehicle };
+const updateVehicle = async (req, res) => {
+  const { brand, model, price, owners, color } = req.body;
+
+  const vehicle = await Vehicle.findById(req.params.id);
+
+  if (vehicle) {
+    vehicle.brand = brand;
+    vehicle.model = model;
+    vehicle.price = price;
+    vehicle.owners = owners;
+    vehicle.color = color;
+
+    const updateVehicle = await vehicle.save();
+    res.json(updateVehicle);
+  } else {
+    res.status(404);
+    throw new Error("Vehicle Not Found");
+  }
+};
+
+export {
+  addVehicle,
+  getVehiclesList,
+  getVehicleById,
+  deleteVehicle,
+  updateVehicle,
+};
