@@ -2,6 +2,7 @@ import express from "express";
 import colors from "colors";
 import connectDB from "./config/db.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import vehicleRoutes from "./routes/routes.js";
 
@@ -9,6 +10,7 @@ dotenv.config();
 connectDB();
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/vehicles", vehicleRoutes);
