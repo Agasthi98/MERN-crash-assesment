@@ -22,4 +22,22 @@ const getVehiclesList = async (req, res) => {
   res.json(vehicle);
 };
 
-export { addVehicle, getVehiclesList };
+const getVehicleById = async (req, res) => {
+  const vehicle = await Vehicle.findById(req.params.id);
+
+  if (vehicle) {
+    res.json({
+      _id: vehicle._id,
+      brand: vehicle.brand,
+      model: vehicle.model,
+      price: vehicle.price,
+      owners: vehicle.owners,
+      color: vehicle.color,
+    });
+  } else {
+    res.status(404);
+    throw new Error("Vehicle not found");
+  }
+};
+
+export { addVehicle, getVehiclesList, getVehicleById };
