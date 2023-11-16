@@ -11,4 +11,15 @@ export const getAllVehicle = async (setData) => {
   }
 };
 
-export const addVehicle = async (vehicle) => {};
+export const addVehicle = async (formData, setFormData, initialValues) => {
+  try {
+    const res = await axios.post(
+      "http://localhost:5500/api/vehicles/",
+      formData
+    );
+    console.log(res);
+    setFormData(initialValues);
+  } catch (err) {
+    console.log(err);
+  }
+};
