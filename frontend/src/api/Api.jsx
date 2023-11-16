@@ -10,3 +10,5 @@ export const getAllVehicle = async (setData) => {
     console.log(err);
   }
 };
+
+export const addVehicle = async (vehicle) => {};

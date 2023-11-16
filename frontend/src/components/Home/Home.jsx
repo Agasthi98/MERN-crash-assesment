@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import AllVehicles from "../GetAllVehicle/GetAllVehicle";
+import Form from "../Form/Form";
 import { getAllVehicle } from "../../api/Api";
 
 const Home = () => {
@@ -16,10 +17,19 @@ const Home = () => {
   console.log(submittedData);
 
   return (
-    <div>
+    <>
       <h3 className="text-center">Vehicle Details</h3>
-      <AllVehicles data={submittedData} />
-    </div>
+      <div className="body-wrapper">
+        <div className="row">
+          <div className="col-4">
+            <Form />
+          </div>
+          <div className="col-8">
+            <AllVehicles data={submittedData} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
