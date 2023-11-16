@@ -40,4 +40,16 @@ const getVehicleById = async (req, res) => {
   }
 };
 
-export { addVehicle, getVehiclesList, getVehicleById };
+const deleteVehicle = async (req, res) => {
+  const vehicle = await Vehicle.findById(req.params.id);
+
+  if (vehicle) {
+    await vehicle.deleteOne();
+    res.json({ message: "Vehicle removed" });
+  } else {
+    res.status(404);
+    throw new Error("Vehicle not found");
+  }
+};
+
+export { addVehicle, getVehiclesList, getVehicleById, deleteVehicle };
