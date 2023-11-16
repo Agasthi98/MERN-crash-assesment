@@ -5,13 +5,8 @@ export const getAllVehicle = async (setData) => {
     const vehicles = await (
       await axios.get("http://localhost:5500/api/vehicles/")
     ).data;
-    console.log(vehicles);
     setData(vehicles);
   } catch (err) {
     console.log(err);
   }
-
-  // const { vehicles } = await axios.get("http://localhost:5500/api/vehicles/");
-  // console.log(vehicles);
-  // setData(vehicles);
 };

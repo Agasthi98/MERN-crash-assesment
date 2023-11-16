@@ -11,15 +11,14 @@ const Home = () => {
       // your API call func
       getAllVehicle(setData);
     }
-
     renderAfterCalled.current = true;
   }, []);
+  console.log(submittedData);
 
-  //   console.log(submittedData);
   return (
     <div>
-      <h1>Home</h1>
-      <AllVehicles />
+      <h3 className="text-center">Vehicle Details</h3>
+      <AllVehicles data={submittedData} />
     </div>
   );
 };
