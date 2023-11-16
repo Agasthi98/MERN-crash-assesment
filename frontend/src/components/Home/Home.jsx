@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import AllVehicles from "../GetAllVehicle/GetAllVehicle";
 import { getAllVehicle } from "../../api/Api";
 
 const Home = () => {
-  const [submittedData, setSubmittedData] = useState([]);
+  const [submittedData, setData] = useState([]);
+  const renderAfterCalled = useRef(false);
 
   useEffect(() => {
-    // your API call func
-    getAllVehicle(setSubmittedData);
+    if (!renderAfterCalled.current) {
+      // your API call func
+      getAllVehicle(setData);
+    }
+
+    renderAfterCalled.current = true;
   }, []);
 
   //   console.log(submittedData);
