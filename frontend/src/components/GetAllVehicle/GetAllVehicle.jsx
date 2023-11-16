@@ -1,11 +1,17 @@
 import React from "react";
 import { deleteVehicle } from "../../api/Api";
+import { reverse } from "../helpers";
 
 const GetAllVehicle = ({ data }) => {
   const deleteHandler = (id) => {
     console.log(id);
     deleteVehicle(id);
   };
+
+  const getVehicleById = (id) => {
+    console.log(id);
+  };
+
   return (
     <div>
       {data.length > 0 && (
@@ -25,14 +31,17 @@ const GetAllVehicle = ({ data }) => {
             {data.map((item, index) => (
               <tr key={item._id}>
                 <th scope="row">{index + 1}</th>
-                <td>{item.brand}</td>
+                <td>{reverse(item.brand)}</td>
                 <td>{item.model}</td>
                 <td>{item.owners}</td>
                 <td>{item.price}</td>
                 <td>{item.color}</td>
                 <td>
-                  {" "}
-                  <button type="button" className="btn btn-success ">
+                  <button
+                    type="button"
+                    className="btn btn-success "
+                    onClick={() => getVehicleById(item._id)}
+                  >
                     Edit
                   </button>
                   <button
