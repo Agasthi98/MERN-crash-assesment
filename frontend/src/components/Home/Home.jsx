@@ -12,8 +12,9 @@ const Home = () => {
       // your API call func
       getAllVehicle(setData);
     }
+
     renderAfterCalled.current = true;
-  }, []);
+  }, [submittedData]);
   console.log(submittedData);
 
   return (
@@ -22,7 +23,7 @@ const Home = () => {
       <div className="body-wrapper">
         <div className="row">
           <div className="col-4">
-            <Form />
+            <Form set={setData} submitData={submittedData} />
           </div>
           <div className="col-8">
             <AllVehicles data={submittedData} />

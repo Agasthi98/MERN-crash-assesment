@@ -17,8 +17,17 @@ export const addVehicle = async (formData, setFormData, initialValues) => {
       "http://localhost:5500/api/vehicles/",
       formData
     );
-    console.log(res);
+    console.log(res.config.data);
     setFormData(initialValues);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteVehicle = async (id) => {
+  try {
+    const res = await axios.delete(`http://localhost:5500/api/vehicles/${id}`);
+    console.log(res);
   } catch (err) {
     console.log(err);
   }

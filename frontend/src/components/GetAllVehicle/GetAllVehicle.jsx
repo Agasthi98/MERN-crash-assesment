@@ -1,4 +1,11 @@
+import React from "react";
+import { deleteVehicle } from "../../api/Api";
+
 const GetAllVehicle = ({ data }) => {
+  const deleteHandler = (id) => {
+    console.log(id);
+    deleteVehicle(id);
+  };
   return (
     <div>
       {data.length > 0 && (
@@ -32,16 +39,11 @@ const GetAllVehicle = ({ data }) => {
                     type="button"
                     className="btn btn-danger"
                     style={{ marginLeft: "10px" }}
+                    onClick={() => deleteHandler(item._id)}
                   >
                     Delete
                   </button>
                 </td>
-                {/* <td>
-                  {" "}
-                  <button type="button" className="btn btn-danger">
-                    Delete
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addVehicle } from "../../api/Api";
 
-const Form = () => {
+const Form = ({ set, submitData }) => {
   const initialValues = {
     brand: "",
     model: "",
@@ -22,6 +22,7 @@ const Form = () => {
 
     addVehicle(formData, setFormData, initialValues);
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
